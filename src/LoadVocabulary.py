@@ -3,6 +3,7 @@
 from PatternBM import *
 from PatternKMP import *
 from PatternRegex import *
+import random
 
 # Load Sunda Vocabulary
 def LoadVocabulary(fileName) :
@@ -26,21 +27,44 @@ def PatternMatching(text, pattern, choice):
     elif (choice == "Regular Expression"):
         return RegexPatternMatching(text, pattern)
 
+# Clear stop words like 'teh' or 'mah'
+def ClearStopWords(buffer):
+    if ("teh" in buffer):
+        buffer.remove("teh")
+    elif ("mah" in buffer):
+        buffer.remove("mah")
+
+# Add stop words like 'teh' or 'mah'
+def AddStopWords(buffer, grammar):
+    n = random.randint(0,1)
+    if (n == 1):
+        if (grammar == "apa"):
+            return "teh " + buffer
+        else: 
+            return buffer + " teh"
+    else:
+        if (grammar == "apa"):
+            return "mah " + buffer
+        else: 
+            return buffer + " mah"
+
 # Translate Sunda into Indonesia
 def SundaToIndoTranslator(buffer, SundaToIndo, choice):
     result = buffer.split(" ")
+    ClearStopWords(result)
     for i in range(len(result)):
         found = False
         newWord = ""
-        for grammar in SundaToIndo:
+        for grammar in sorted (SundaToIndo.keys(), key=len, reverse=True):
             if (PatternMatching(result[i], grammar, choice)):
                 found = True
-                # print(result[i], grammar)
+                print(result[i]," = ",grammar)
                 newWord = SundaToIndo[grammar]
                 break
         if (found):
-            result[i] = newWord
-        # print(result)
+            temp = result[i]
+            temp = temp.replace(grammar, newWord)
+            result[i] = temp
 
     final = ""
     if (len(result) != 0):
@@ -51,19 +75,25 @@ def SundaToIndoTranslator(buffer, SundaToIndo, choice):
 
 # Translate Indonesia to Sunda
 def IndoToSundaTranslator(buffer, IndoToSunda, choice):
+    penekanan = ["saya", "kamu", "kita", "apa"]
+    IsAlreadyPenekanan = False
     result = buffer.split(" ")
     for i in range(len(result)):
         found = False
         newWord = ""
-        for grammar in IndoToSunda:
+        for grammar in sorted (IndoToSunda.keys(), key=len, reverse=True):
             if (PatternMatching(result[i], grammar, choice)):
                 found = True
-                # print(result[i], grammar)
+                print(result[i]," = ",grammar)
                 newWord = IndoToSunda[grammar]
                 break
         if (found):
-            result[i] = newWord
-        # print(result)
+            temp = result[i]
+            temp = temp.replace(grammar, newWord)
+            result[i] = temp
+            if ((grammar in penekanan) and not(IsAlreadyPenekanan)):
+                result[i] = AddStopWords(result[i], grammar)
+                IsAlreadyPenekanan = True
 
     final = ""
     if (len(result) != 0):

@@ -4,21 +4,68 @@ Simple Sundanese to Bahasa Indonesia translator using Pattern Matching
 ## Latar Belakang
 Pada suatu hari, ada mahasiswa bernama Riyugan yang baru pindah ke Bandung. Pada awalnya dia mengalami kesulitan untuk bersosialisai dengan lingkungan sekitar karena orang-orang di lingkungannya yang baru hanya berbicara dalam bahasa Sunda. Beruntungnya Riyugan punya teman dari kampung halamannya, yaitu Anda, untuk diminta membuat penerjemah sederhana dari Bahasa Sunda ke Bahasa Indonesia begitu pula sebaliknya untuk memudahkan dirinya bersosialisasi dengan lingkungan barunya di Bandung.
 
-## Spesifikasi
-Buatlah dalam bahasa pemrograman Python, program penerjemah sederhana yang memanfaatkan algoritma String Matching (Knuth-Morris-Pratt(KMP), Boyer-Moore(BM), dan Regex), dengan spesifikasi sebagai berikut.
-1. Program mampu membaca kata atau kalimat yang akan diterjemahkan.
-2. Program akan membaca file eksternal yang berisi vocabulary Bahasa Sunda - Bahasa Indonesia (file sudah disiapkan dalam repository).
-3. Program akan melakukan penerjemahan secara perkata (untuk contoh akan ditampilkan di bawah).
-4. Program dapat memilih mau "Bahasa Sunda ke Bahasa Indonesia" atau "Bahasa Indonesia ke Bahasa Sunda".
-5. Pada saat penerjemahan "Bahasa Sunda ke Bahasa Indonesia", program mampu mengenali kata yang tidak memiliki arti (stopwords), seperti "teh" sehingga dapat diabaikan saat penerjemahan.
-6. Pada saat penerjemahan "Bahasa Indonesia ke Bahasa Sunda", program mampu menambahkan kata untuk penekanan kalimat, seperti "teh".
-7. Program dapat menampilkan hasil terjemahan.
-8. Program dibuat secara individu.
-9. Peserta akan mendapatkan nilai bonus jika mengimplementasikan dalam web (untuk bahasanya dibebaskan).
-10. Dilarang meng-copy source code program yang sudah jadi, untuk source code algoritma string matching dipersilahkan menggunakan source code dari tugas yang sudah pernah dibuat (Tugas Kecil 4).
-11. Batas pengerjaannya adalah 6 Juni 2020.
+## Getting Started
+Instruksi-instruksi berikut ini akan membimbing Anda dalam tahap instalasi aplikasi dan cara menjalankannya.
 
-## Contoh Kasus Uji
+### Prerequisites
+Berikut ini adalah persiapan environment yang dibutuhkan untuk menjalankan aplikasi.
+```
+- Flask Framework for Integration
+- HTML and CSS for Front End
+- Regular Expression Library
+- Python 3.x.x for Back End
+```
+
+### Installing
+Berikut ini adalah langkah-langkah dalam penginstallan aplikasi:
+1. Install library Flask terlebih dahulu menggunakan command sebagai berikut.
+```
+pip install Flask
+```
+2. Lakukan penginstalan Regular Expression dengan command sebagai berikut pada terminal biasa.
+```
+pip install regex
+```
+3. Semua prerequisites sudah disiapkan dengan baik.
+
+## How to Run Program
+1. Untuk menjalankan program, pastikan command sudah berada dalam directory `./src`, lalu jalankan command sebagai berikut.
+```
+python WebTranslator.py
+```
+2. Tunggu kira-kira 5-15 detik. Localhost Flask akan dijalankan. Untuk menampilkan aplikasi web, buka browser kemudian masuk ke laman berikut ini.
+```
+localhost:5000
+```
+3. Bila muncul tampilan tanpa adanya error message, maka program berhasil dijalankan.
+
+## Guideline: How To Use
+1. Browse vocabulary file untuk Indonesia-Sunda dan Sunda-Indonesia
+2. Pastikan bahwa file-file tersebut bertipe text dan berada pada directory ./test. Format umum untuk penulisan vocabulary adalah sebagai berikut.
+```
+kata = words
+sebelum = before
+sesudah = after
+```
+3. Pilih mode terjemahan yang diinginkan. Terdapat dua mode terjemahan yang bisa dilakukan, yaitu:
+- Sunda-Indonesia
+- Indonesia-Sunda
+Pastikan sesuai dengan text yang ingin diterjemahkan
+4. Pilih salah satu dari tiga metode pattern matching yang disediakan, yaitu:
+- Algoritma Boyers-Moore
+- Algoritma Knutt-Morris-Pratt
+- Regular Expression
+5. Masukkan text yang ingin diterjemahkan sesuai dengan pilihan terjemahan yang diinginkan
+6. Tekan tombol Translate untuk memulai penerjemahan
+7. Untuk melakukan penerjemahan kembali, tekan tombol Home untuk kembali ke Menu Awal
+
+## Built With
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Integrasi Backend dan FrontEnd
+* HTML - Front End dari Aplikasi
+* CSS - Front End dari Aplikasi
+* [Python](https://www.python.org/) - Back End dari Aplikasi
+
+## Beberapa Kasus Uji
 ```
 Sunda - Indonesia
 Sunda : nami abdi Riyugan
@@ -55,8 +102,20 @@ Indonesia : saya tidak bisa bahasa Sunda
 Sunda : abdi henteu tiasa bahasa Sunda
 ```
 
-## Pengumpulan
-1. Lakukan merge request dari hasil fork kalian ke repository ini
-2. Untuk demonya, silahkan membuat video demo penggunaan programnya, diupload ke YouTube dan sertakan linknya pada Readme.
+## Video Demo Simple Sundanese Translator
+Anda dapat menonton video penggunaan aplikasi ini pada laman berikut ini.
+-- Coming Soon --
 
-### **_(Ubah file README ini pada repository hasil fork kalian)_**
+## Testing
+Untuk menjalankan testing pada web-app penerjemah ini, dapat dijalankan program secara command line interface sebagai berikut.
+1. Untuk menjalankan program, pastikan command sudah berada dalam directory `./src`, lalu jalankan command sebagai berikut.
+```
+python BackEndTest.py
+```
+2. Masukkan input-input yang bersesuaian sesuai dengan yang diminta oleh program.
+
+## Authors
+**13518056 - Michael Hans** - *Designer, Programmer, and Tester*
+
+## Acknowledgments
+* Asisten IRK, Ricky Yuliawan
