@@ -85,8 +85,8 @@ Indonesia : kamu tiba dari mana?
 
 ```
 Indonesia - Sunda
-Indonesia : nama saya Riyugan
-Sunda : nami abdi Riyugan
+Indonesia : mau kamu apa?
+Sunda : kersa maneh mah naon?
 ```
 
 ```
@@ -103,7 +103,7 @@ Sunda : abdi henteu tiasa bahasa Sunda
 
 ## Video Demo Simple Sundanese Translator
 Anda dapat menonton video penggunaan aplikasi ini pada laman berikut ini.
--- Coming Soon --
+[Simple Sundanese Translator - Demo Aplikasi](https://youtu.be/uu_j1l-vfLo)
 
 ## Testing
 Untuk menjalankan testing pada web-app penerjemah ini, dapat dijalankan program secara command line interface sebagai berikut.
@@ -112,6 +112,9 @@ Untuk menjalankan testing pada web-app penerjemah ini, dapat dijalankan program 
 python BackEndTest.py
 ```
 2. Masukkan input-input yang bersesuaian sesuai dengan yang diminta oleh program.
+
+## Catatan
+Tidak semua kalimat dapat diterjemahkan tepat sasaran mengingat keterbatasan vocabulary yang ada dalam file vocabulary.
 
 ## Authors
 **13518056 - Michael Hans** - *Designer, Programmer, and Tester*

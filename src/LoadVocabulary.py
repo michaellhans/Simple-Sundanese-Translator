@@ -5,7 +5,7 @@ from PatternKMP import *
 from PatternRegex import *
 import random
 
-# Load Sunda Vocabulary
+# Load Sunda Vocabulary dalam bentuk map
 def LoadVocabulary(fileName) :
     f = open("../test/"+fileName, "r")
     text = f.read()
@@ -18,7 +18,7 @@ def LoadVocabulary(fileName) :
         vocab.update({temp[0] : temp[1]})
     return vocab
 
-# Pattern Matching sorted by user choice
+# Pattern Matching according to user choice
 def PatternMatching(text, pattern, choice):
     if (choice == "Algoritma Boyers-Moore"):
         return BMPatternMatching(text, pattern)
@@ -28,6 +28,7 @@ def PatternMatching(text, pattern, choice):
         return RegexPatternMatching(text, pattern)
 
 # Clear stop words like 'teh' or 'mah'
+# Used when translate from Sunda to Indonesia
 def ClearStopWords(buffer):
     if ("teh" in buffer):
         buffer.remove("teh")
@@ -35,6 +36,7 @@ def ClearStopWords(buffer):
         buffer.remove("mah")
 
 # Add stop words like 'teh' or 'mah'
+# Used when translate from Indonesia to Sunda
 def AddStopWords(buffer, grammar):
     n = random.randint(0,1)
     if (n == 1):
@@ -52,13 +54,14 @@ def AddStopWords(buffer, grammar):
 def SundaToIndoTranslator(buffer, SundaToIndo, choice):
     result = buffer.split(" ")
     ClearStopWords(result)
+
+    # Proses terjemahan kata per kata dari result
     for i in range(len(result)):
         found = False
         newWord = ""
         for grammar in sorted (SundaToIndo.keys(), key=len, reverse=True):
             if (PatternMatching(result[i], grammar, choice)):
                 found = True
-                print(result[i]," = ",grammar)
                 newWord = SundaToIndo[grammar]
                 break
         if (found):
@@ -66,6 +69,7 @@ def SundaToIndoTranslator(buffer, SundaToIndo, choice):
             temp = temp.replace(grammar, newWord)
             result[i] = temp
 
+    # Menggabungkan seluruh kata terjemahan menjadi satu kalimat
     final = ""
     if (len(result) != 0):
         final = final + result[0]
@@ -78,13 +82,14 @@ def IndoToSundaTranslator(buffer, IndoToSunda, choice):
     penekanan = ["saya", "kamu", "kita", "apa"]
     IsAlreadyPenekanan = False
     result = buffer.split(" ")
+
+    # Proses terjemahan kata per kata dari result
     for i in range(len(result)):
         found = False
         newWord = ""
         for grammar in sorted (IndoToSunda.keys(), key=len, reverse=True):
             if (PatternMatching(result[i], grammar, choice)):
                 found = True
-                print(result[i]," = ",grammar)
                 newWord = IndoToSunda[grammar]
                 break
         if (found):
@@ -95,6 +100,7 @@ def IndoToSundaTranslator(buffer, IndoToSunda, choice):
                 result[i] = AddStopWords(result[i], grammar)
                 IsAlreadyPenekanan = True
 
+    # Menggabungkan seluruh kata terjemahan menjadi satu kalimat
     final = ""
     if (len(result) != 0):
         final = final + result[0]

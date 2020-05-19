@@ -1,4 +1,4 @@
-# Asisten Ilmu dan Rekayasa Komputasi
+# Calon Asisten Ilmu dan Rekayasa Komputasi
 # Menu Program Utama : Web Translator
 # Terintegrasi dengan HTML dan Python dengan Flask Framework
 # Created by: 13518056 / Michael Hans
@@ -22,7 +22,7 @@ def home():
         return redirect(url_for("result", SIV = SunIndVocab, ISV = IndSunVocab, Trs = Translator, ptr = method, inputtext = buffer))
     return render_template('home.html')
 
-# Halaman Web Bagian Hasil Ekstraksi
+# Halaman Web Bagian Hasil Terjemahan
 @app.route("/result")
 def result():
     SunIndVocab = request.args.get('SIV')

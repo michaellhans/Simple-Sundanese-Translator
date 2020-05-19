@@ -20,9 +20,6 @@ IndoToSunda = {}
 SundaToIndo = LoadVocabulary(SIVFilename)
 IndoToSunda = LoadVocabulary(ISVFilename)
 
-# for grammar in sorted (SundaToIndo.keys(), key=len, reverse=True):
-#     print(grammar, SundaToIndo[grammar])
-
 # Choose preference method for pattern matching
 print()
 print("Terdapat 3 buah metode pencocokan string:")
@@ -51,20 +48,7 @@ else:
 # Translator for Back End
 print()
 buffer = input("Input text: ")
-print()
-print("=== Back End Test Module ===")
-if (translatorInt == 1):
-    result = SundaToIndoTranslator(buffer, SundaToIndo, choice)
-    print("Sunda     :", buffer)
-    print("Indonesia :", result)
-else:
-    result = IndoToSundaTranslator(buffer, IndoToSunda, choice)
-    print("Indonesia :", buffer)
-    print("Sunda     :", result)
-
-# Begin Translation for Front End
-print()
-print("=== Front End Test Module ===")
+print("=== Hasil Terjemahan ===")
 if (translator == "Sunda-Indonesia"):
     result = BeginTranslation(SIVFilename, ISVFilename, translator, choice, buffer)
     print("Sunda     :", buffer)
