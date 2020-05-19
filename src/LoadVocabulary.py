@@ -19,11 +19,11 @@ def LoadVocabulary(fileName) :
 
 # Pattern Matching sorted by user choice
 def PatternMatching(text, pattern, choice):
-    if (choice == 1):
+    if (choice == "Algoritma Boyers-Moore"):
         return BMPatternMatching(text, pattern)
-    elif (choice == 2):
+    elif (choice == "Algoritma Knuth-Morris-Pratt"):
         return KMPPatternMatching(text, pattern)
-    elif (choice == 3):
+    elif (choice == "Regular Expression"):
         return RegexPatternMatching(text, pattern)
 
 # Translate Sunda into Indonesia
@@ -35,12 +35,12 @@ def SundaToIndoTranslator(buffer, SundaToIndo, choice):
         for grammar in SundaToIndo:
             if (PatternMatching(result[i], grammar, choice)):
                 found = True
-                print(result[i], grammar)
+                # print(result[i], grammar)
                 newWord = SundaToIndo[grammar]
                 break
         if (found):
             result[i] = newWord
-        print(result)
+        # print(result)
 
     final = ""
     if (len(result) != 0):
@@ -58,12 +58,12 @@ def IndoToSundaTranslator(buffer, IndoToSunda, choice):
         for grammar in IndoToSunda:
             if (PatternMatching(result[i], grammar, choice)):
                 found = True
-                print(result[i], grammar)
+                # print(result[i], grammar)
                 newWord = IndoToSunda[grammar]
                 break
         if (found):
             result[i] = newWord
-        print(result)
+        # print(result)
 
     final = ""
     if (len(result) != 0):
@@ -72,34 +72,17 @@ def IndoToSundaTranslator(buffer, IndoToSunda, choice):
             final = final + " " + result[i]
     return final
 
-# Load Vocabulary Indonesia-Sunda and Sunda-Indonesia
-IndoToSunda = {}
-SundaToIndo = {}
-IndoToSunda = LoadVocabulary("indonesia.txt")
-SundaToIndo = LoadVocabulary("sunda.txt")
+# Memulai proses penerjemahan
+def BeginTranslation(SunIndVocab, IndSunVocab, Translator, choice, buffer):
+    # Load Vocabulary
+    SundaToIndo = {}
+    IndoToSunda = {}
+    SundaToIndo = LoadVocabulary(SunIndVocab)
+    IndoToSunda = LoadVocabulary(IndSunVocab)
 
-# Choose preference method for pattern matching
-print("Simple Sundanese Translator")
-print("Created by: 13518056 - Michael Hans")
-print("Terdapat 3 buah metode pencocokan string:")
-print("1. Algoritma Boyer-Moore")
-print("2. Algoritma KMP")
-print("3. Regular Expression")
-choice = int(input("Masukkan pilihan metode pencocokan string: "))
-
-# Choose Translation Method
-print("Terdapat 2 metode penerjemahan:")
-print("1. Sunda-Indonesia")
-print("2. Indonesia-Sunda")
-method = int(input("Masukkan pilihan metode: "))
-
-# Input text that want to be translated
-buffer = input("Input text: ")
-if (method == 1):
-    result = SundaToIndoTranslator(buffer, SundaToIndo, choice)
-    print("Sunda     :", buffer)
-    print("Indonesia :", result)
-else:
-    result = IndoToSundaTranslator(buffer, IndoToSunda, choice)
-    print("Indonesia :", buffer)
-    print("Sunda     :", result)
+    # Translator
+    if (Translator == "Sunda-Indonesia"):
+        result = SundaToIndoTranslator(buffer, SundaToIndo, choice)
+    elif (Translator == "Indonesia-Sunda"):
+        result = IndoToSundaTranslator(buffer, IndoToSunda, choice)
+    return result

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="media content-section">
+      <div class="media-body">
+      <div class="article-metadata">
+          <a class="mr-2" href="#">Michael Hans</a>
+          <small class="text-muted">Selasa, 19 Mei 2020</small>
+      </div>
+      <h2><a class="article-title" href="#">Simple Sundanese Translator</a></h2>
+        <p class="article-content">
+          <form action="#", method="post">
+            <label for="SunInd"><b>Load Sunda-Indonesia Vocabulary:</b></label><br>
+            <input type="file" id="SunInd" name="SunInd"><br><br>
+            <label for="IndSun"><b>Load Indonesia-Sunda Vocabulary:</b></label><br>
+            <input type="file" id="IndSun" name="IndSun"><br><br>
+
+            <label for="method"><b>Pilih metode penerjemahan yang diinginkan:</b></label><br>
+            <input type="radio" id="SunIndTrs" name="translatemethod" value="Sunda-Indonesia">
+            <label for="SunIndTrs">Sunda-Indonesia</label><br>
+            <input type="radio" id="IndSunTrs" name="translatemethod" value="Indonesia-Sunda">
+            <label for="IndSunTrs">Indonesia-Sunda</label><br>
+
+            <label for="method"><b>Pilih metode pattern matching yang diinginkan:</b></label><br>
+            <input type="radio" id="patternbm" name="matchmethod" value="Algoritma Boyers-Moore">
+            <label for="patternbm">Algoritma Boyers-Moore</label><br>
+            <input type="radio" id="patternkmp" name="matchmethod" value="Algoritma Knuth-Morris-Pratt">
+            <label for="patternkmp">Algoritma Knuth–Morris–Pratt</label><br>
+            <input type="radio" id="regex" name="matchmethod" value="Regular Expression">
+            <label for="regex">Regular Expression</label><br><br>
+
+            <textarea id="inputtext" name="buffer" rows="4" cols="50">
+            </textarea>
+
+            <input type="submit" value="Translate"><br>
+          </form>
+        </p>
+      </div>
+    </article>
+{% endblock content %}

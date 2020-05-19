@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">Michael Hans</a>
+            <small class="text-muted">Selasa, 19 Mei 2020</small>
+        </div>
+        <h2><a class="article-title" href="#">Simple Sundanese Translator</a></h2>
+        <p class="article-content">
+            <label for="method"><b>Metode Penerjemahan: </b>{{translator}}</label>
+            <label for="method"><b>Metode Pattern Matching: </b>{{pattern}}</label>
+            {%if (translator == "Sunda-Indonesia")%}
+                <label for="fname"><b>Sunda: </b></label> 
+                {{buffer}}<br>
+                <label for="fname"><b>Indonesia : </b></label> 
+                {{result}}<br>
+            {%else%}
+                <label for="fname"><b>Indonesia : </b></label> 
+                {{buffer}}<br>
+                <label for="fname"><b>Sunda : </b></label> 
+                {{result}}<br>
+            {%endif%}
+        </p>
+        </div>
+    </article> 
+{% endblock content %}
