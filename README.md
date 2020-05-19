@@ -50,8 +50,7 @@ sesudah = after
 3. Pilih mode terjemahan yang diinginkan. Terdapat dua mode terjemahan yang bisa dilakukan, yaitu:
 - Sunda-Indonesia
 - Indonesia-Sunda
-Pastikan sesuai dengan text yang ingin diterjemahkan
-4. Pilih salah satu dari tiga metode pattern matching yang disediakan, yaitu:
+1. Pilih salah satu dari tiga metode pattern matching yang disediakan, yaitu:
 - Algoritma Boyers-Moore
 - Algoritma Knutt-Morris-Pratt
 - Regular Expression
